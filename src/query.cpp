@@ -197,9 +197,9 @@ String Query::escapeColumn(const String& key, const String& table) {
         char* t = PQescapeIdentifier(connector->conn, table.c_str(), table.length());
         ret += String(t) + ".";
         PQfreemem(t);
-    } else {
-        ret += String(c) + rest + " ";
     }
+    ret += String(c) + rest + " ";
+
     PQfreemem(c);
 
     return ret;
